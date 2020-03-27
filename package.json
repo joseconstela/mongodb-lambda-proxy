@@ -1,0 +1,21 @@
+{
+  "name": "tideflow-db-lambda-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test env-cmd -f .env --no-override jest --coverage",
+    "dev": "env-cmd -f .env nodemon src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.643.0",
+    "mongodb": "^3.5.5"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "env-cmd": "^10.1.0",
+    "jest": "^25.1.0"
+  }
+}
