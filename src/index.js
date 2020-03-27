@@ -16,18 +16,18 @@ const handler = async (event, context) => {
 
 module.exports.handler = handler
 
-;
-(async() => {
-  let r = await handler({
-    collection: 'jobs_data',
-    op: 'aggregate',
-    query: [
-      {$matcsh: {name:'s-rss-schedule'}}
-    ],
-    options: {
-      fields: { name: 1 },
-    }
-  }, {}, {})
+// ;
+// (async() => {
+//   let r = await handler({
+//     collection: 'jobs_data',
+//     op: 'aggregate',
+//     query: [
+//       {$matcsh: {name:'s-rss-schedule'}}
+//     ],
+//     options: {
+//       fields: { name: 1 },
+//     }
+//   }, {}, {})
 
-  console.log(r)
-})()
+//   console.log(r)
+// })()
