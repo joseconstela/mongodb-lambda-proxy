@@ -45,6 +45,7 @@ const connect = async (uri, forceDetails) => {
   const connectionDetails = forceDetails || await secretsHelper.getSecret(config.secretsList.connectionDetails)
   
   return MongoClient.connect(buildUrl(connectionDetails), {
+      poolSize: config.connection.poolSize,
       useNewUrlParser: true
     })
     .then(client => {

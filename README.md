@@ -82,6 +82,12 @@ console.log(r)
 previously created.
 3. Make sure that your Lambda function have access to Secret Manager. (IAM)
 
+## Environment variables
+
+- `SECRET_MONGODB_CONNECTIONDETAILS` _required_ name of the secret where the
+connection details are stored.
+- `MONGODB_POOLSIZE` _optional_ size of connection pool. Defaults to 5
+
 ## Security
 
 For improved security, you must specify the connection details via a AWS Secret,

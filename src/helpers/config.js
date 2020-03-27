@@ -16,6 +16,9 @@ module.exports.getAll = () => {
       awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
       awsAccessKeyId: process.env.AWS_ACCESS_KEY_ID
     },
+    connection: {
+      poolSize: process.env.MONGODB_POOLSIZE ? parseInt(process.env.MONGODB_POOLSIZE) : 5
+    },
     secretsList: {
       connectionDetails: process.env.SECRET_MONGODB_CONNECTIONDETAILS
     }

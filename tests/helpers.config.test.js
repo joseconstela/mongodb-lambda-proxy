@@ -8,6 +8,7 @@ test('expect to get all config', () => {
     expect(allConfig.secrets.awsSecretAccessKey).toBe('123')
     expect(allConfig.secrets.awsAccessKeyId).toBe('456')
     expect(allConfig.secretsList.connectionDetails).toBe('mongodbConnectionDetailsAwsSecret')
+    expect(allConfig.connection.poolSize).toBe(15)
   }
   catch (ex) {
     expect(ex).toBeFalsy()
