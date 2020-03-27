@@ -9,7 +9,7 @@ const buildUrl = opts => {
   let connectionString = opts.connectionString
 
   if (!connectionString) {
-    connectionString = `mongodb://`
+    connectionString = `mongodb+srv://`
 
     if (opts.username) {
       connectionString += encodeURIComponent(opts.username)
@@ -19,7 +19,6 @@ const buildUrl = opts => {
 
     connectionString += opts.hostname
 
-    if (opts.port) connectionString += `:${opts.port}`
     if (opts.database) connectionString += `/${opts.database}`
     if (opts.query) connectionString += `?${opts.query}`
   }
@@ -29,7 +28,7 @@ const buildUrl = opts => {
 
 module.exports.buildUrl = buildUrl
 
-const connect = async (uri, forceDetails) => {
+const connect = async forceDetails => {
   if (cachedDb) {
     return Promise.resolve(cachedDb)
   }
@@ -38,7 +37,10 @@ const connect = async (uri, forceDetails) => {
 
   const connectionDetails = forceDetails || await secretsHelper.getSecret(config.secretsList.connectionDetails)
   
-  return MongoClient.connect(buildUrl(connectionDetails), {
+  const url = buildUrl(connectionDetails)
+  console.log({url})
+
+  return MongoClient.connect(url, {
       poolSize: config.connection.poolSize,
       useNewUrlParser: true
     })

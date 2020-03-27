@@ -9,7 +9,6 @@ test('expect to grab secret correctly', async() => {
     expect(secret).toMatchObject({
       username: 'jon',
       password: 'snow',
-      port: '27017',
       hostname: 'localhost',
       database: 'testing',
       query: 'retryWrites=true&w=majority'

@@ -8,7 +8,7 @@ test('expect to get full connection string', async() => {
   try {
     let secret = await secretsHelper.getSecret(config.secretsList.connectionDetails)
     let result = mongoHelper.buildUrl(secret)
-    expect(result).toBe('mongodb://jon:snow@localhost:27017/testing?retryWrites=true&w=majority')
+    expect(result).toBe('mongodb+srv://jon:snow@localhost/testing?retryWrites=true&w=majority')
   }
   catch (ex) {
     expect(ex).toBeFalsy()
@@ -20,7 +20,7 @@ test('expect to get full connection string without password', async() => {
     let fullSecret = await secretsHelper.getSecret(config.secretsList.connectionDetails)
     let secret = Object.assign({}, fullSecret, {password: null})
     let result = mongoHelper.buildUrl(secret)
-    expect(result).toBe('mongodb://jon@localhost:27017/testing?retryWrites=true&w=majority')
+    expect(result).toBe('mongodb+srv://jon@localhost/testing?retryWrites=true&w=majority')
   }
   catch (ex) {
     expect(ex).toBeFalsy()
@@ -32,7 +32,7 @@ test('expect to get full connection string without authentication', async() => {
     let fullSecret = await secretsHelper.getSecret(config.secretsList.connectionDetails)
     let secret = Object.assign({}, fullSecret, {password: null, username: null})
     let result = mongoHelper.buildUrl(secret)
-    expect(result).toBe('mongodb://localhost:27017/testing?retryWrites=true&w=majority')
+    expect(result).toBe('mongodb+srv://localhost/testing?retryWrites=true&w=majority')
   }
   catch (ex) {
     expect(ex).toBeFalsy()
@@ -44,7 +44,7 @@ test('expect to get full connection string without query', async() => {
     let fullSecret = await secretsHelper.getSecret(config.secretsList.connectionDetails)
     let secret = Object.assign({}, fullSecret, {query: null})
     let result = mongoHelper.buildUrl(secret)
-    expect(result).toBe('mongodb://jon:snow@localhost:27017/testing')
+    expect(result).toBe('mongodb+srv://jon:snow@localhost/testing')
   }
   catch (ex) {
     expect(ex).toBeFalsy()
