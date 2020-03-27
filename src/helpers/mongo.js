@@ -42,6 +42,8 @@ const connect = async forceDetails => {
 
   return MongoClient.connect(url, {
       poolSize: config.connection.poolSize,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
       useNewUrlParser: true
     })
     .then(client => {
@@ -55,6 +57,8 @@ module.exports.connect = connect
 const query = async (db, opts) => {
   const collection = db.collection(opts.collection)
   let op = await collection[opts.op](opts.query, opts.options)
+
+  if (op === null) return null
 
   const className = op.constructor.name
 
