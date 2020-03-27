@@ -36,12 +36,6 @@ const connect = async (uri, forceDetails) => {
 
   const config = configHelper.getAll()
 
-  forceDetails = {
-    hostname: 'localhost',
-    port: 3001,
-    database: 'meteor'
-  }
-
   const connectionDetails = forceDetails || await secretsHelper.getSecret(config.secretsList.connectionDetails)
   
   return MongoClient.connect(buildUrl(connectionDetails), {
