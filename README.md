@@ -9,6 +9,9 @@ own database connection. Instead, they will invoke "Proxy", sending the query
 parameters. Once invoked, the Proxy will run the query using the standard
 MongoDB Node.js driver, and reply back with the query results.
 
+This will help you to reduce database stress, idle connections, etc. It
+has support for find, update, delete, aggregate, etc.
+
 See [webiny's blog](https://blog.webiny.com/using-aws-lambda-to-create-a-mongodb-connection-proxy-2bb53c4a0af4)
 to understand more about the problem that Proxy solves.
 
