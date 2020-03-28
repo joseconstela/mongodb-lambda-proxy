@@ -1,39 +1,21 @@
 # MongoDB Lambda proxy (aka Proxy)
 
-> A Lambda function that serves as a database connection proxy.
+> An AWS Lambda function that serves as a MongoDB connection proxy.
 
-_Designed for AWS_
+It uses MongoDB native driver, Lambda & Secrets Manager.
 
 With MongoDB Lambda Proxy, your Lambda functions don't need to establish its
 own database connection. Instead, they will invoke "Proxy", sending the query
 parameters. Once invoked, the Proxy will run the query using the standard
 MongoDB Node.js driver, and reply back with the query results.
 
+This will help you to reduce database stress, idle connections, etc. It
+has support for find, update, delete, aggregate, etc.
+
 See [webiny's blog](https://blog.webiny.com/using-aws-lambda-to-create-a-mongodb-connection-proxy-2bb53c4a0af4)
 to understand more about the problem that Proxy solves.
 
 ## Usage
-
-### As a library
-
-```javascript
-let r = await proxy.handler({
-  collection: 'users',
-  op: 'findOne',
-  query: {
-    name: 'Jon'
-  },
-  options: {
-    fields: { email: 1 },
-  }
-}, {}, {})
-
-console.log(r)
-
-// { success: true, result: { email: 'jon@example.com' } }
-```
-
-### As a Lambda function
 
 ```javascript
 
