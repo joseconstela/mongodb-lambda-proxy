@@ -15,6 +15,12 @@ has support for find, update, delete, aggregate, etc.
 See [webiny's blog](https://blog.webiny.com/using-aws-lambda-to-create-a-mongodb-connection-proxy-2bb53c4a0af4)
 to understand more about the problem that Proxy solves.
 
+```
+Please note the current implementation serializes and de-serializes
+JSON objects. This causes Dates and other types to be tranformed to
+strings and others.
+```
+
 ## Usage
 
 ```javascript
