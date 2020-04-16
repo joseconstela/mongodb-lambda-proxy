@@ -42,7 +42,6 @@ const connect = async forceDetails => {
 
   return MongoClient.connect(url, {
       poolSize: config.connection.poolSize,
-      useNewUrlParser: true,
       useUnifiedTopology: true,
       useNewUrlParser: true
     })
